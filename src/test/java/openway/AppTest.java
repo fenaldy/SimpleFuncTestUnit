@@ -18,6 +18,7 @@ public class AppTest
      */
    CalculationLogic calcLogic;
 
+   //Test Data
    @DataProvider (name = "data-provider")
    public Object[][] dataProvider(){
       return new Object[][] {{-2, -0.5},
@@ -31,12 +32,14 @@ public class AppTest
                               {10000, +0.0001}};           
    }
 
+   //This is the first priority of scenario due to testing the happy path, by using several of datas sampling
    @Test(priority = 1, dataProvider = "data-provider")
    public void testingValidCalculation(int inputParameter, double expectedResult){
       calcLogic = new CalculationLogic(inputParameter, 1);
       Assert.assertEquals(calcLogic.Calculating(), expectedResult);
    }
 
+   //this scenario is being second priority because it is an edge case to test the function while the function expecting integer but it receive string instead
    @Test(priority = 2)
    public void testingInvalidCalculationGivenString(){
       try{

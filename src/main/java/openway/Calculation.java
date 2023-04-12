@@ -1,5 +1,6 @@
 package openway;
 
+//POJO class
 public class Calculation {
     
     private int inputParameter;
